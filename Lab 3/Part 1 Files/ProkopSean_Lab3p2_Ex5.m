@@ -7,14 +7,14 @@ imwrite(img,'myfirstimage.jpg');
 delete(cam);
 
 %% resize image 
-img=imresize(img,[360 640]);
+img=imresize(img,[720 1080]);
 R=img(:,:,1);
 G=img(:,:,2);
 B=img(:,:,3);
 
 %% black and white
 x=rgb2gray(img);
-bnw=uint8(zeros(360,640,3));
+bnw=uint8(zeros(720,1080,3));
 bnw(:,:,1)=x;
 bnw(:,:,2)=x;
 bnw(:,:,3)=x;
@@ -45,5 +45,5 @@ med=cat(3,med1,med2.*1.1,med3.*1.3);
 adjimg=decorrstretch(imadjust(img,[0.3 0.5],[]));
 
 %% combine em all my dude
-newimg=[img; bnw; lessRed; pink; emb_sharp; med; adjimg];
+newimg=[img bnw bnw lessRed; pink emb_sharp med adjimg];
 imshow(newimg)
